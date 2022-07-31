@@ -1,0 +1,17 @@
+<%- include("header") %>
+
+<div class="container">
+    <% if(journals.length){ %>
+        <% for(let journal of journals){ %>
+            <div class="singlePostContent alignCenter">
+                <a href="journals/<%= journal.name %>"><p class="journalNames"><%= journal.name %>&emsp;&emsp;Posts : <%= journal.posts.length %></p></a>
+            </div>
+        <% } %>
+    <% }else{ %>
+        <div class="singlePostContent alignCenter">
+            <a href="journals/<%= journal.name %>"><p class="journalNames">No journals found ! Create new by /compose.</p></a>
+        </div>
+    <% } %>
+</div>
+
+<%- include("footer") %>

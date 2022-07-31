@@ -1,0 +1,159 @@
+body{
+    background-color: #212529;
+}
+
+.tab-1{
+    tab-size: 16;
+}
+
+.navbar{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    letter-spacing: 3px;
+    margin-bottom: 5%;
+}
+
+.container-fluid{
+    margin-left: 20%;
+}
+
+.nav-item{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.content{
+    text-align: center;
+    margin: 5% 0% 5% 0%;
+}
+
+.composeForm{
+    position: relative;
+    background-color: #E9ECEF;
+    margin: 3% auto 0% auto;
+}
+
+.titleInput{
+    padding: 2% 0% 2% 0%;
+}
+
+.journalNameInput{
+    padding: 2% 0 0 0;
+}
+
+.journalName{
+    width: 12%;
+    margin: 0 0 0 0;
+}
+
+.nameLabel{
+    position: absolute;
+    left: 29%;
+}
+
+.journalNameInputDiv , .text{
+    margin: 0 0 0 5%;
+}
+
+.formLabel{
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.contentInput{
+    position: relative;
+}
+
+.postLabel{
+    position: absolute;
+    left: 35%;
+}
+
+.title{
+    margin: 0% 0% 0% 1%;
+    width: 25%;
+}
+
+.submitButton{
+    margin: 2% 0 2% 0;
+}
+
+.postTitle , #titleInp , #contentT , .postFooter{
+    background-color: #CED4DA;
+}
+
+.postTitle{
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 2% 2% 0 2%;
+    border-bottom: solid #212529;
+}
+
+a{
+    text-decoration: none;
+    color: #212529;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #212529;
+}
+
+.postContent{
+    padding: 1% 2% 2% 2%;
+}
+
+.singlePostContent{
+    margin: 2% auto 2% auto;
+    width: 50%;
+    justify-content: center;
+    border-style: solid;
+    border-color: #E9ECEF;
+    border-radius: 5px;
+}
+
+.postPara{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 1.8em;
+    line-height: 1.8em;
+    word-wrap: break-word;
+    white-space: nowrap;
+}
+
+.singlePostContentButton{
+    margin: 2% auto 2% auto;
+    width: 50%;
+    justify-content: center;
+}
+
+.formButton{
+    margin: 0 2% 0 0;
+}
+
+#titleInp,#contentT{
+    border: none;
+    border-bottom: solid black;
+    margin: 0 0 1% 0;
+}
+
+#contentT , .singlePostContent{
+    background-color: #E9ECEF;
+}
+
+.postFooter{
+    font-size: 0.8rem;
+    border-bottom-right-radius: 5px;
+}
+
+.postJournalName{
+    margin: 0 0 0 2%;
+}
+
+.journalNames{
+    font-size: 1.5rem;
+}
+
+.alignCenter{
+    text-align: center;
+}

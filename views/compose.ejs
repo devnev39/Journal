@@ -1,0 +1,55 @@
+<%- include("header") %>
+<div class="content">
+    <h1>Compose !</h1>
+    <form action="/" method="post" id="publishForm">
+        <div class="composeForm">
+            <div class="journalNameInput">
+                <label class="formLabel nameLabel">Journal Name : </label>
+                <div class="journalNameInputDiv">
+                    <input id="journalInput" class="journalName" type="text" name="journalName">
+                    OR
+                    <select id="journalSelect" class="journalName" name="journalName">
+                        <option value="New">New</option>
+                        <% for(let journal of journals){ %>
+                            <option value="<%= journal.name %>"><%= journal.name %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="titleInput">
+                <label class="formLabel">Title : </label>
+                <input class="title" type="text" name="title" id="title">    
+            </div>
+            <div class="contentInput">
+                <label class="formLabel postLabel">Post : </label>
+                <textarea id="content" class="text" name="content" cols="40" rows="5"></textarea>
+            </div>
+            <button type="button" id="publishBtn" class="btn btn-success submitButton">Publish</button>
+        </div>
+        <div class="alert alert-danger collapse" id="submitAlert">  
+            Title or Content not filled ! Please fill again.
+            <a id="closeA" class="close" style="margin: 0 0 0 5%;" href="#">&times;</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#publishBtn").on("click",(ev) => {
+        if($("#title").val() && $("#content").val()){
+            if($("#journalSelect").val() == "New"){
+                $("#journalSelect").attr("disabled",true);
+            }else{
+                $("#journalInput").attr("disabled",true);
+            }
+            $("#publishForm").submit();
+        }else{
+            $("#submitAlert").show("fade");
+        }
+    });
+
+    $("#closeA").click((ev) => {
+            $("#submitAlert").hide("fade");
+    });
+</script>
+
+<%- include("footer") %>

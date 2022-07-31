@@ -1,0 +1,64 @@
+<%- include("header") %>
+<form action="/operation/<%= journalName %>" method="post" id="postForm">
+    <div class="singlePostContent">
+        <div class="postTitle">
+            <p id="titleP"><%= post.title %></p>
+            <input id="titleInp" value="<%= post.title %>" name="title" hidden>
+        </div>
+        <div class="postContent">
+            <p id="contentP"><%= post.content %></p>
+            <textarea id="contentT" name="content" cols="40" rows="5" hidden><%= post.content %></textarea>
+        </div>
+    </div>
+    <div class="singlePostContentButton">
+        <button type="button" id="editButton" class="btn btn-primary formButton">Edit</button>
+        <button type="button" id="deleteButton" class="btn btn-danger formButton">Delete</button>
+    </div>
+    <input id="saveCheck" type="checkbox" name="toSave" hidden>
+    <input type="text" name="postID" value="<%= post._id.toString() %>" hidden>
+    <div class="alert alert-danger collapse" style="text-align: center;" id="submitAlert">  
+        Title or Content not filled ! Please fill again.
+        <a id="closeA" class="close" style="margin: 0 0 0 5%;" href="#">&times;</a>
+    </div>
+</form>
+<script>
+    let edit = false;
+    $("#deleteButton").on("click",(ev) => {
+        const res = confirm("Do you want to delete this entry ?");
+        if(res)
+            $("#postForm").submit();
+    });
+
+    $("#editButton").on("click",(ev) => {
+        if(!edit){
+            $("#titleP").attr("hidden",true);
+            $("#titleInp").attr("hidden",false);
+            $("#contentP").attr("hidden",true);
+            $("#contentT").attr("hidden",false);
+            $("#editButton").text("Save");
+            $("#editButton").removeClass("btn-primary").addClass("btn-success");
+            edit = true;
+            $("#saveCheck").attr("checked",true);
+        }else{
+            if($("#titleInp").val() && $("#contentT").val()){
+                $("#postForm").submit();
+                edit = false;
+                $("#saveCheck").attr("checked",false);
+                $("#titleP").attr("hidden",false);
+                $("#titleInp").attr("hidden",true);
+                $("#contentP").attr("hidden",false);
+                $("#contentT").attr("hidden",true);
+                $("#editButton").text("Edit");
+                $("#editButton").removeClass("btn-success").addClass("btn-primary");
+            }else{
+                $("#submitAlert").show("fade");
+            }
+        }
+
+        $("#closeA").click((ev) => {
+            $("#submitAlert").hide("fade");
+        });
+            
+    });
+</script>
+<%- include("footer") %>
