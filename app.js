@@ -24,6 +24,7 @@ const journalSchema = {
 }
 
 const Journal = mongoose.model("journal",journalSchema);
+const Post = mongoose.model("post",postSchema);
 
 const getPostsFromDb = async () => {
     const result = await Journal.find();
