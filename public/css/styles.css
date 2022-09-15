@@ -2,6 +2,25 @@ body{
     background-color: #212529;
 }
 
+h2,a{
+    color: white;
+}
+
+.showFunctions{
+    position: relative;
+    text-align: center;
+    border-color: #CED4DA;
+    border-radius: 5px;
+    border-style: solid;
+    width: 50%;
+    left: 25%;
+}
+
+.functionItem{
+    padding: 10px;
+    border-bottom: #E9ECEF solid;
+}
+
 .tab-1{
     tab-size: 16;
 }
