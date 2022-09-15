@@ -157,6 +157,6 @@ app.post("/operation/:journalName",async (req,res) => {
 
 const PORT = process.env.PORT;
 
-app.listen(3000,() => {
+app.listen(PORT,() => {
     console.log(`Server up and running on port ${PORT} !`);
 });
