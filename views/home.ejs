@@ -1,17 +1,19 @@
 <%- include("header") %>
-<% if(posts && posts.length){ %>
-    <% for(let post of posts) { %>
-        <div class="singlePostContent">
-            <div class="postTitle">
-                <a href="/journals/<%= journalName %>/<%= post.title %>"><p><%= post.title %></p></a>
+<% if(journals && journals.length){ %>
+    <% for(let journal of journals){ %> 
+        <% for(let post of journal.posts) { %>
+            <div class="singlePostContent">
+                <div class="postTitle">
+                    <a href="/journals/<%= journal.name %>/<%= post.title %>"><p><%= post.title %></p></a>
+                </div>
+                <div class="postContent">
+                    <p class="postPara"><%= post.content %></p>
+                </div>
+                <div class="postFooter">
+                    <p class="postJournalName"><%= journal.name %></p>
+                </div>
             </div>
-            <div class="postContent">
-                <p class="postPara"><%= post.content %></p>
-            </div>
-            <div class="postFooter">
-                <p class="postJournalName"><%= journalName %></p>
-            </div>
-        </div>
+        <% } %>
     <% } %>
 <% }else { %>
     <div class="singlePostContent">
@@ -22,7 +24,7 @@
             <p class="postPara">No posts available currently to show !</p>
         </div>
         <div class="postFooter">
-            <p class="postJournalName"><%= journalName %></p>
+            <p class="postJournalName">***</p>
         </div>
     </div>
 <% } %>

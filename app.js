@@ -11,7 +11,11 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 app.set("view engine","ejs");
 
+// Online MONGOATLAS
 mongoose.connect("mongodb+srv://devnev:Password-123@cluster0.uayzvos.mongodb.net/journalDB",{useNewUrlParser : true});
+
+// Local Mongo
+// mongoose.connect("mongodb://127.0.0.1:27017/journalDB");
 
 const postSchema = {
     title : String,
@@ -26,20 +30,11 @@ const journalSchema = {
 const Journal = mongoose.model("journal",journalSchema);
 const Post = mongoose.model("post",postSchema);
 
-const getPostsFromDb = async () => {
-    const result = await Journal.find();
-    if(result.length){
-        return result[0];
-    }
-    return undefined;
-}
-
 const sendPostsResponse = async (res) => {
-    let result = await getPostsFromDb();
-    if(!result){
-        result = [];
-    }
-    res.render("home",{title : "Home",posts : result.posts, journalName : result.name});
+    let result = await Journal.find();
+    result = result.length ? result : [];
+    console.log(result);
+    res.render("home",{title : "Home",journals : result});
 }
 
 app.get("/",(req,res) => {
@@ -49,9 +44,9 @@ app.get("/",(req,res) => {
 app.get("/journals/:journalName",async (req,res) => {
     const result = await Journal.find({name : req.params.journalName});
     if(result.length){
-        res.render("home",{title : "Home",posts : result[0].posts,journalName : result[0].name});
+        res.render("home",{title : "Home",journals : result});
     }else{
-        res.render("home",{title : "Home",posts : [], journalName : "None"});
+        res.render("home",{title : "Home",journals : []});
     }
 });
 
