@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.set("view engine","ejs");
 
 // Online MONGOATLAS
-mongoose.connect("mongodb+srv://devnev:Password-123@cluster0.uayzvos.mongodb.net/journalDB",{useNewUrlParser : true});
+const MONGOURI = process.env.MONGOURI;
+mongoose.connect(MONGOURI,{useNewUrlParser : true});
 
 // Local Mongo
 // mongoose.connect("mongodb://127.0.0.1:27017/journalDB");
